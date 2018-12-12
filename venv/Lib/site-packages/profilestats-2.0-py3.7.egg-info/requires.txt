@@ -1,0 +1,2 @@
+setuptools
+pyprof2calltree
