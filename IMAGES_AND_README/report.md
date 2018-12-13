@@ -1,9 +1,9 @@
 Run in python on a Macbook Pro with a 3.5 GHz Intel Core i7 (Hyperthreaded with 20 thread pool)
 
 All renders done with 400x400 images in perspective without antialiasing
+(Animation done with 256x256 images)
 
 Scene                           | Time      | Primary Rays  | Shadow Rays   | Total Rays
 ---                             | ---:      | ---:          | ---:          | ---:
-Area Light (16 samples)         | 1718s     | 160,000       | 2,707,595     | 2,867,595
-Perfect Reflection              | 168.8s    | 163,941       | 156,059       | 320,000
-Transparent Object (`n=3.0`)    | 222.1s    | 190,763       | 190,763       | 381,526
+Animation (375 frames)          | ~25hrs    | 65,536/frame  | 65,536/frame  | 49,152,000
+Texturing + CSG                 | 117.6s    | 160,000       | 160,000       | 320,000

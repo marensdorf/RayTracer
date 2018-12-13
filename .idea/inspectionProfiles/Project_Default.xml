@@ -25,6 +25,7 @@
         <list>
           <option value="kEpsilon" />
           <option value="f" />
+          <option value="scipy.interpolate" />
         </list>
       </option>
     </inspection_tool>

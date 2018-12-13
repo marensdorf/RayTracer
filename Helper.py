@@ -84,6 +84,10 @@ def clamp(x, lower, upper):
     return lower if x < lower else (upper if x > upper else x)
 
 
+def lerp(v0, v1, t):
+    return v0 + clamp(t, 0.0, 1.0) * (v1 - v0)
+
+
 def findBVHs(ray, bvh):
     # return 0.0, [bvh]
     t0 = (bvh.min - ray.o) / ray.d

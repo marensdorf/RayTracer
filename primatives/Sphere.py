@@ -86,3 +86,9 @@ class Sphere:
     def getNormal(self, pt):
         """ Returns unit normal of sphere at the point pt """
         return Helper.normalize(pt - self.center)
+
+    def contains(self, pt):
+        temp = pt - self.center
+        if np.dot(temp, temp) - self.r2 < self.kEpsilon:
+            return True
+        return False

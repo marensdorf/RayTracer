@@ -5,18 +5,22 @@ import concurrent.futures
 import Halton
 from BVH import AccelStruct
 from Blobby import BlobbyParticles
+from CSG import CSG
 from Textures import *
 from primatives.Plane import Plane
 from primatives.Ray import Ray
 from Complex import *
-from Lights import *
+from Lights import PointLight, DirLight, AreaLight
 from ViewPort import ViewPort
 from tqdm import tqdm
 
 from primatives.Sphere import Sphere
 
 
-def run(frame, viewPt, *particles):
+resolution = 400
+
+
+def run():
     timeStart = time.time()
     perspective = True
     jittering = False
@@ -50,27 +54,38 @@ def run(frame, viewPt, *particles):
     # viewZoom = 1.5
 
     # Blobby
-    BlobbyParticles(o, [255, 0, 0], 0.1, *particles)
+    # BlobbyParticles(o, [255, 0, 0], 0.1, *particles)
     # for p in particles:
     #     o.add(Sphere(2.0, p, mat=[255, 0, 0]))
-    o.add(Plane([0, 0, 0], [0, 1, 0], mat=[250, 250, 250], minimum=[-10, -10, -10], maximum=[10, 10, 10], matfunc=grid))
-    o.add(
-        Plane([0, 0, -3], [0, 0, 1], mat=[250, 250, 250], minimum=[-10, -10, -10], maximum=[10, 10, 10], matfunc=grid))
+
+    # Textures
+    # o.add(Plane([0, 0, 0], [0, 1, 0], mat=[250, 250, 250], minimum=[-10, -10, -10], maximum=[10, 10, 10], matfunc=grid))
+    # o.add(
+    #     Plane([0, 0, -3], [0, 0, 1], mat=[250, 250, 250], minimum=[-10, -10, -10], maximum=[10, 10, 10], matfunc=grid))
+    o.add(Sphere(2.0, [-3, 1, -1], mat=[50, 130, 250], matfunc=marbleTexture))
+
+    # CSG
+    c = CSG(Sphere(3.0, [0, 3, 0], mat=[250, 0, 0], matfunc=grid))
+    c.add(Sphere(3.0, [1, 3, 0]), 1)
+    # c.add(Sphere(3.0, [0.5, 0, 0]), 1)
+    o.add(c)
+
     lights.append(PointLight([0, 10, 2]))
+    viewPt = [0, 2, 6]
     viewDir = [0, 0, -1]
     viewUp = [0, 1, 0]
     viewPortDist = 1.0
     viewZoom = 0.5
 
     # create a viewport and image
-    v = ViewPort(256, 256, viewPt, viewDir, viewUp, viewPortDist, viewZoom)
+    v = ViewPort(resolution, resolution, viewPt, viewDir, viewUp, viewPortDist, viewZoom)
     a = np.zeros((v.h, v.w, 3))
     o.calculate()
     print("Total time to setup objects: {:.3}s".format(time.time() - timeStart))
     timeStart = time.time()
     with concurrent.futures.ThreadPoolExecutor() as e:
         futures = []
-        for row in range(v.h):
+        for row in tqdm(range(v.h)):
             for col in range(v.w):
                 if jittering:
                     for n in range(numJitters):
@@ -105,45 +120,12 @@ def run(frame, viewPt, *particles):
     for row in range(v.h):
         for col in range(v.w):
             pix[row, (v.w - 1) - col] = tuple(a[row, col].astype(int))
-    im.save('images/frame{0:04d}.bmp'.format(frame))
+    im.save('out.bmp')
     # im.show()
 
 
 if __name__ == '__main__':
-    np.set_printoptions(precision=3)
+    np.set_printoptions(precision=4)
     np.seterr(divide='ignore', invalid='ignore')
 
-    gravity = 40.0
-    framerate = 30.0
-    seconds = 12.5
-    frametime = 1.0 / framerate
-
-    p1 = np.asfarray([-1.821, 3.712, 0.])
-    p2 = np.asfarray([1.821, 4.288, 0.])
-    v1 = np.asfarray([-1.737, 1.374, 0.])
-    v2 = -v1
-    vPt = np.asfarray([0, 3, 6])
-    viewDir = np.asfarray([0, 0, -1])
-
-    lastframe = time.time()
-    for i in tqdm(range(247, int(seconds * framerate))):
-        time.sleep(0.1)
-        print('Frame: ' + str(i))
-        print(p1, end='\t')
-        print(v1)
-        print(p2, end='\t')
-        print(v2)
-        run(i, vPt, p1, p2)
-        p1 += v1 * frametime
-        p2 += v2 * frametime
-
-        p1top2 = p2 - p1
-        distsq = p1top2.dot(p1top2)
-        a1 = Helper.normalize(p1top2) * gravity / distsq
-        a2 = -a1
-        v1 += a1 * frametime
-        v2 += a2 * frametime
-
-        print('Frame calculated in {0:.3f}s'.format(time.time() - lastframe))
-        lastframe = time.time()
-        time.sleep(0.1)
+    run()
