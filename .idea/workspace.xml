@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0098ee4b-d98f-448a-91f2-bdc4c85183b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CSG.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMAGES_AND_README/report.md" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES_AND_README/report.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Textures.py" beforeDir="false" afterPath="$PROJECT_DIR$/Textures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workspace.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Workspace.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/primatives/Sphere.py" beforeDir="false" afterPath="$PROJECT_DIR$/primatives/Sphere.py" afterDir="false" />
-    </list>
+    <list default="true" id="0098ee4b-d98f-448a-91f2-bdc4c85183b7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +23,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="368">
-                  <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+                <state relative-caret-position="459">
+                  <caret line="76" column="22" lean-forward="true" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -445,12 +434,20 @@
       <workItem from="1544408914760" duration="13380000" />
       <workItem from="1544430740784" duration="8188000" />
       <workItem from="1544554832690" duration="814000" />
-      <workItem from="1544649936531" duration="9816000" />
+      <workItem from="1544649936531" duration="10317000" />
     </task>
+    <task id="LOCAL-00001" summary="Implemented CSG">
+      <created>1544678052593</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1544678052593</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76764000" />
+    <option name="totallyTimeSpent" value="77265000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -463,13 +460,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49851632" visible="true" weight="0.15228967" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49851632" visible="true" weight="0.15228967" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5014837" side_tool="true" weight="0.08798283" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32953367" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.1865285" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946752" weight="0.1865285" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -493,6 +491,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented CSG" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented CSG" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Halton.py">
@@ -768,8 +770,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+        <state relative-caret-position="459">
+          <caret line="76" column="22" lean-forward="true" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
